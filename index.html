@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="index.css">
+    <title>Song-Demo</title>
+</head>
+<body>
+    <main>
+        <div class="audio_container">
+            <div class="image">
+                <img  id="song_image"  width="75px" height="75px">
+            </div>
+            <div class="controls">
+                <div class="buttons">
+                    <table>
+                        <tr>
+                            <td><img src="Assets/Pictures/prev.png" class="control-button" onclick="PrevSong()" alt=""></td>
+                            <td><img src="Assets/Pictures/play.png" class="control-button" id="play" onclick="PlayOrPause()" alt=""></td>
+                            <td><img src="Assets/Pictures/next.png" class="control-button" onclick="NextSong()" alt=""></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="duration">
+                    <div id="songname"></div>
+                    <div id="duration">.</div>
+                </div>
+            </div>
+        </div>
+        <div class="songlist">
+            <ul id="list">
+                <li>
+                    <h3>Songs</h3>
+                </li>
+            </ul>
+        </div>
+    </main>
+    <footer>
+        <p>Website production heavy work in progress</p>
+    </footer>
+    <script src="index.js"></script>
+</body>
+</html>
