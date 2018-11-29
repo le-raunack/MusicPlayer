@@ -1,3 +1,4 @@
+"use strict";
 let img_tracker = "play"; // Global image tacker
 
 //Global songs list, song names list, song poster and settings
@@ -45,8 +46,6 @@ let Poster = [
 let current_song = 0;
 let song = new Audio();
 
-// Song duration Event listner
-
 song.addEventListener("timeupdate", function() {
   let position = song.currentTime / song.duration;
   document.getElementById("duration").style.width = position * 100 + "%";
@@ -56,6 +55,14 @@ song.src = songsList[current_song];
 document.getElementById("songname").textContent = songNames[current_song];
 document.getElementById("song_image").src = Poster[current_song];
 song.play();
+
+song.addEventListener("ended", function() {
+  current_song++;
+  song.src = songsList[current_song];
+  document.getElementById("songname").textContent = songNames[current_song];
+  document.getElementById("song_image").src = Poster[current_song];
+  song.play();
+});
 
 //Play and Pause buttons
 
@@ -116,3 +123,17 @@ function PlaySong() {
 }
 
 SongsList();
+
+let toggle_tracker = 1;
+
+function Toggle() {
+  if (toggle_tracker === 1) {
+    document.getElementById("list").style.display = "none";
+    toggle_tracker = 0;
+    document.getElementsByTagName("footer")[0].style.position = "fixed";
+  } else {
+    document.getElementById("list").style.display = "block";
+    toggle_tracker = 1;
+    document.getElementsByTagName("footer")[0].style.position = "relative";
+  }
+}
