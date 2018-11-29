@@ -56,13 +56,29 @@ document.getElementById("songname").textContent = songNames[current_song];
 document.getElementById("song_image").src = Poster[current_song];
 song.play();
 
-song.addEventListener("ended", function() {
-  current_song++;
-  song.src = songsList[current_song];
-  document.getElementById("songname").textContent = songNames[current_song];
-  document.getElementById("song_image").src = Poster[current_song];
-  song.play();
+let autoplay = 0;
+
+document.getElementById("autoplay").addEventListener("change", function() {
+  if (this.checked) {
+    autoplay = 1;
+  } else {
+    autoplay = 0;
+  }
 });
+
+song.addEventListener("ended", function() {
+  if (autoplay === 1) {
+    current_song++;
+    song.src = songsList[current_song];
+    document.getElementById("songname").textContent = songNames[current_song];
+    document.getElementById("song_image").src = Poster[current_song];
+    song.play();
+  } else {
+    return null;
+  }
+});
+
+/********************FUNCTIONS**********************/
 
 //Play and Pause buttons
 
