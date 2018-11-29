@@ -53,6 +53,10 @@ table tr td{
     text-align: center;
 }
 
+#autoplay, #shuffle{
+    margin: auto 10px;
+}
+
 #duration{
     background: rgb(113, 121, 238);
     color: rgb(113, 121, 238);
@@ -127,5 +131,9 @@ footer{
 
     footer{
         position: relative;
+    }
+
+    .duration{
+        box-shadow: 0px 0.5px 2px 0px gray;
     }
 }
