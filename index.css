@@ -53,8 +53,9 @@ table tr td{
     text-align: center;
 }
 
-#autoplay, #shuffle{
-    margin: auto 10px;
+.autoplay, .shuffle{
+    display: inline;
+    margin: 0px 5px;
 }
 
 #duration{
@@ -120,7 +121,10 @@ footer{
     .audio_container{
         width: 90%;
     }
-
+    #song_image{
+        margin: 0px 5px;
+        padding: 0px 5px;
+    }
     .buttons{
         width: 80%;
     }
@@ -135,5 +139,11 @@ footer{
 
     .duration{
         box-shadow: 0px 0.5px 2px 0px gray;
+    }
+}
+
+@media (min-width: 500px) and (max-width: 700px){
+    .audio_container, .songlist{
+        width: 80%;
     }
 }

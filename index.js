@@ -157,7 +157,7 @@ function Shuffle() {
   let random = Math.random(songsList);
   random = random * 10;
   random = parseInt(random);
-  if(random > 14){
+  if (random > 14) {
     random = 0;
   }
   current_song = random;
@@ -200,3 +200,19 @@ function Toggle() {
     document.getElementsByTagName("footer")[0].style.position = "relative";
   }
 }
+
+document.getElementById("toggle_menu").addEventListener("click", function() {
+  if (
+    document
+      .getElementById("toggled_menu")
+      .classList.contains("toggled_menu_hidden")
+  ) {
+    document
+      .getElementById("toggled_menu")
+      .classList.remove("toggled_menu_hidden");
+  } else {
+    document
+      .getElementById("toggled_menu")
+      .classList.add("toggled_menu_hidden");
+  }
+});
