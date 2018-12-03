@@ -26,9 +26,23 @@
                 </div>
                 <div class="duration">
                     <div id="songname"></div>
-                    <div id="duration">.</div>
-                    <div class="autoplay"><input type="checkbox" id="autoplay">Autoplay</div>
-                    <div class="shuffle"><input type="checkbox" id="shuffle">Shuffle</div> 
+                    <input type="range" min="0" max="100" value="0" id="slider"> 
+                    <div class="songoperations">
+                        <div class="autoplay">
+                            <img src="Assets/Pictures/auto-play-inactive.png" id="autoplay" alt="" title="Autoplay">
+                        </div>
+                        <div class="shuffle">
+                            <img src="Assets/Pictures/shuffle-inactive.png" id="shuffle" alt="" title="Shuffle" >
+                        </div> 
+                        <div class="volume">
+                            <img src="Assets/Pictures/volume-unmute.png" alt="" id="volume-img" title="Volume">
+                            <input type="range" name="" id="volume" min="0" max="100" value="100">
+                        </div>
+                    </div>
+                    <div class="volume-media">
+                            <img src="Assets/Pictures/volume-unmute.png" alt="" id="volume-img-media">
+                        <input type="range" name="" id="volume-media" min="0" max="100" value="100">
+                    </div>
                 </div>
             </div>
         </div>
@@ -42,7 +56,7 @@
         </div>
     </main>
     <footer>
-        <p>Website production heavy work in progress</p>
+        <p>Website is subjected to a style change in the near future.</p>
     </footer>
     <script src="index.js"></script>
 </body>
