@@ -85,7 +85,7 @@ songposter.src = songPos[current_song];
 
 song.addEventListener("timeupdate", function() {
   songtime.textContent =
-    parseInt(song.currentTime) + " / " + parseInt(song.duration) + " seconds";
+    calculateTime(song.currentTime) + " / " + calculateTime(song.duration);
 });
 
 autoplay.addEventListener("click", function() {
@@ -167,7 +167,7 @@ function AutoPlay() {
   } else {
     current_song++;
   }
-  if (current_song > songsList.length - 1) {
+  if (current_song > songsList.length - 2) {
     current_song = 0;
   }
   song.src = songsList[current_song];
@@ -240,3 +240,15 @@ function SongList() {
   }
 }
 SongList();
+
+function calculateTime(currentTime) {
+  let current_minute = parseInt(currentTime / 60) /* % 60*/,
+    current_seconds_long = currentTime % 60,
+    current_seconds = current_seconds_long.toFixed(),
+    current_time =
+      (current_minute < 10 ? "0" + current_minute : current_minute) +
+      ":" +
+      (current_seconds < 10 ? "0" + current_seconds : current_seconds);
+
+  return current_time;
+}

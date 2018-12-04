@@ -20,16 +20,16 @@
                 <div class="display">
                     <h3 id="songname"></h3>
                     <input type="range" min="0" max="100" value="0" id="duration">
-                    <p id="songtime">Time</p>
+                    <p id="songtime">00:00 / 00:00</p>
                 </div>
             </div>
             <div class="musicplayer-controls">
                 <div class="controlbuttons">
                     <table>
                         <tr>
-                            <td><img src="Assets/Buttons/prev.png" alt="" onclick="PrevSong()"></td>
-                            <td><img src="Assets/Buttons/play.png" alt="" id="playnpause" onclick="PlayNPause()"></td>
-                            <td><img src="Assets/Buttons/next.png" alt="" onclick="NextSong()"></td>
+                            <td onclick="PrevSong()"><img src="Assets/Buttons/prev.png" alt=""></td>
+                            <td onclick="PlayNPause()"><img src="Assets/Buttons/play.png" alt="" id="playnpause"></td>
+                            <td onclick="NextSong()"><img src="Assets/Buttons/next.png" alt=""></td>
                         </tr>
                     </table>
                 </div>
