@@ -6,6 +6,10 @@ body{
     background: lightgray;
 }
 
+#media{
+    display: none;
+}
+
 #list{
     background: white;
     width: 50%;
@@ -184,6 +188,21 @@ body{
 }
 
 @media (min-width:320px) and (max-width:480px){
+    #media{
+        display: block;
+        box-shadow: 0px 1px 5px 0px black;
+        border-radius: 10px;
+        width: 80%;
+        margin: 10px auto;
+        background: white;
+        text-align: center;
+        padding: 10px;
+    }
+    
+    main{
+        display: none;
+    }
+
     #list{
         width: 90%;
     }
@@ -223,6 +242,20 @@ body{
 }
 
 @media (min-width:481px) and (max-width:720px){
+    #media{
+        display: block;
+        box-shadow: 0px 1px 5px 0px black;
+        border-radius: 10px;
+        width: 80%;
+        margin: 10px auto;
+        background: white;
+        text-align: center;
+        padding: 10px;
+    }
+    
+    main{
+        display: none;
+    }
     .volume{
         display: none;
     }
