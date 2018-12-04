@@ -196,7 +196,7 @@ function NextSong() {
     Shuffle();
   }
   current_song++;
-  if (current_song > songsList.length - 1) {
+  if (current_song > songsList.length - 2) {
     current_song = 0;
   }
   song.src = songsList[current_song];
@@ -211,7 +211,7 @@ function PrevSong() {
   }
   current_song--;
   if (current_song < 0) {
-    current_song = songsList.length - 1;
+    current_song = songsList.length - 2;
   }
   song.src = songsList[current_song];
   songname.textContent = songNames[current_song];

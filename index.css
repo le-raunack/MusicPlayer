@@ -182,3 +182,57 @@ body{
     height: 20px;
     cursor: pointer;
 }
+
+@media (min-width:320px) and (max-width:480px){
+    #list{
+        width: 90%;
+    }
+
+    #songposter{
+        width: 32px;
+        height: 32px;
+    }
+
+    .musicplayer{
+        padding: 0px;
+        display: inline-flex;
+        justify-content: left;
+    }
+
+    .musicplayer-player{
+        width: 65%;
+        margin: 0px 10px;
+    }
+
+    .musicplayer-controls{
+        margin: 0px;
+    }
+
+    .songoperations{
+        display: block;
+    }
+
+    .operation{
+        width: 100%;
+        margin: 10px 20px;
+    }
+
+    .volume{
+        display: none;
+    }
+}
+
+@media (min-width:481px) and (max-width:720px){
+    .volume{
+        display: none;
+    }
+
+    .songoperations{
+        display: block;
+    }
+
+    .operation{
+        width: 100%;
+        text-align: center;
+    }
+}
