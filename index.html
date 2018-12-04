@@ -5,59 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="index.css">
-    <link rel="shortcut icon" href="Assets/Pictures/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="Assets/Buttons/favicon.ico" type="image/x-icon">
     <title>Simple Music Player</title>
 </head>
 <body>
     <main>
-        <div class="audio_container">
-            <div class="image">
-                <img  id="song_image"  width="75px" height="75px">
+        <div class="songlist-display">
+            <ul id="list"></ul>
+        </div>
+        <div class="musicplayer">
+            <div class="musicplayer-player">
+                <img src="Assets/Pictures/Pos_1.jpg" alt="" id="songposter" width="100px" height="100px">
+                <div class="display">
+                    <h3 id="songname"></h3>
+                    <input type="range" min="0" max="100" value="0" id="duration">
+                    <p id="songtime"></p>
+                </div>
             </div>
-            <div class="controls">
-                <div class="buttons">
+            <div class="musicplayer-controls">
+                <div class="controlbuttons">
                     <table>
                         <tr>
-                            <td><img src="Assets/Pictures/prev.png" class="control-button" onclick="PrevSong()" alt=""></td>
-                            <td><img src="Assets/Pictures/play.png" class="control-button" id="play" onclick="PlayOrPause()" alt=""></td>
-                            <td><img src="Assets/Pictures/next.png" class="control-button" onclick="NextSong()" alt=""></td>
+                            <td><img src="Assets/Buttons/prev.png" alt="" onclick="PrevSong()"></td>
+                            <td><img src="Assets/Buttons/play.png" alt="" id="playnpause" onclick="PlayNPause()"></td>
+                            <td><img src="Assets/Buttons/next.png" alt="" onclick="NextSong()"></td>
                         </tr>
                     </table>
                 </div>
-                <div class="duration">
-                    <div id="songname"></div>
-                    <input type="range" min="0" max="100" value="0" id="slider"> 
-                    <div class="songoperations">
-                        <div class="autoplay">
-                            <img src="Assets/Pictures/auto-play-inactive.png" id="autoplay" alt="" title="Autoplay">
-                        </div>
-                        <div class="shuffle">
-                            <img src="Assets/Pictures/shuffle-inactive.png" id="shuffle" alt="" title="Shuffle" >
-                        </div> 
-                        <div class="volume">
-                            <img src="Assets/Pictures/volume-unmute.png" alt="" id="volume-img" title="Volume">
-                            <input type="range" name="" id="volume" min="0" max="100" value="100">
-                        </div>
+                <div class="songoperations">
+                    <div class="operation">
+                            <img src="Assets/Buttons/auto-play-inactive.png" alt="" id="autoplay">
                     </div>
-                    <div class="volume-media">
-                            <img src="Assets/Pictures/volume-unmute.png" alt="" id="volume-img-media">
-                        <input type="range" name="" id="volume-media" min="0" max="100" value="100">
+                    <div class="operation">
+                            <img src="Assets/Buttons/shuffle-inactive.png" alt="" id="shuffle">
                     </div>
+                </div>
+                <div class="volume">
+                    <img src="Assets/Buttons/volume-unmute.png" alt="" id="volume-img">
+                    <input type="range" min="0" max="100" value="100" id="volume">
                 </div>
             </div>
         </div>
-        <div class="songlist">
-            <div class="toggle-list">
-                <h3>Songs</h3>
-                <img src="Assets/Pictures/toggle.png" alt="" onclick="Toggle()">
-            </div>
-            <ul id="list">
-            </ul>
-        </div>
     </main>
-    <footer>
-        <p>Website is subjected to a style change in the near future.</p>
-    </footer>
     <script src="index.js"></script>
 </body>
 </html>

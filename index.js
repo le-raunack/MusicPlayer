@@ -1,9 +1,24 @@
-"use strict";
-let autoplay = 0; // Global autoplay tracker
-let shuffle = 0; // Global shuffle tracker
-let toggle_tracker = 1; // Global toggle tracker
+/*********************************************
+ *                                           *|
+ *              MUSIC PLAYER VER 2           *|
+ *                                           *|
+ * *******************************************/
 
-//Global songs list, song names list, song poster and settings
+//All variables:
+
+let song = new Audio();
+let current_song = 0;
+let autoplay = document.getElementById("autoplay");
+let autoplay_tracker = 0;
+let shuffle = document.getElementById("shuffle");
+let shuffle_tracker = 0;
+let songname = document.getElementById("songname");
+let songtime = document.getElementById("songtime");
+let songposter = document.getElementById("songposter");
+let volume = document.getElementById("volume");
+let volume_img = document.getElementById("volume-img");
+let playorpause = document.getElementById("playnpause");
+let namelist = document.getElementById("list");
 
 let songsList = [
   "Assets/Songs/Song_1.mp3",
@@ -20,8 +35,10 @@ let songsList = [
   "Assets/Songs/Song_12.mp3",
   "Assets/Songs/Song_13.mp3",
   "Assets/Songs/Song_14.mp3",
-  "Assets/Songs/Song_15.mp3"
+  "Assets/Songs/Song_15.mp3",
+  " "
 ];
+
 let songNames = [
   "Ekadantaya Vakratundaya",
   "Grand Theft Auto V Theme",
@@ -37,121 +54,95 @@ let songNames = [
   "Neon Genesis: Evangelion Opening",
   "Sono Chi No Kiouku; End of ZA WARUDO - JoJo's Bizarre Adventures Season 3 Opening",
   "Avengers Theme Song",
-  "Roundabout - Yes"
-];
-let Poster = [
-  "Assets/Posters/Pos_1.jpg",
-  "Assets/Posters/Pos_2.jpg",
-  "Assets/Posters/Pos_3.jpg",
-  "Assets/Posters/Pos_4.jpg"
+  "Roundabout - Yes",
+  " "
 ];
 
-//////// Song objects
+let songPos = [
+  "Assets/Pictures/Pos_1.jpg",
+  "Assets/Pictures/Pos_2.jpg",
+  "Assets/Pictures/Pos_3.jpg",
+  "Assets/Pictures/Pos_4.jpg",
+  "Assets/Pictures/Pos_5.jpg",
+  "Assets/Pictures/Pos_6.jpg",
+  "Assets/Pictures/Pos_7.jpg",
+  "Assets/Pictures/Pos_8.jpg",
+  "Assets/Pictures/Pos_9.jpg",
+  "Assets/Pictures/Pos_10.jpg",
+  "Assets/Pictures/Pos_11.jpg",
+  "Assets/Pictures/Pos_12.jpg",
+  "Assets/Pictures/Pos_13.jpg",
+  "Assets/Pictures/Pos_14.jpg",
+  "Assets/Pictures/Pos_15.jpg",
+  " "
+];
 
-let current_song = 0;
-let song = new Audio();
-let slider = document.getElementById("slider");
-let nameList = document.getElementById("list");
-let text = document.getElementById("songname");
-let poster = document.getElementById("song_image");
-let auto_img = document.getElementById("autoplay");
-let shuffle_img = document.getElementById("shuffle");
-let volume_tracker = document.getElementById("volume");
-let volume_tracker_media = document.getElementById("volume-media");
+// Initializations:
 
-////// Duration bar
+song.src = songsList[current_song];
+songname.textContent = songNames[current_song];
+songposter.src = songPos[current_song];
 
 song.addEventListener("timeupdate", function() {
-  let position = song.currentTime / song.duration;
-  slider.value = position * 100;
+  songtime.textContent =
+    parseInt(song.currentTime) + " / " + parseInt(song.duration) + " seconds";
 });
 
-slider.oninput = function() {
+autoplay.addEventListener("click", function() {
+  if (autoplay_tracker === 0) {
+    autoplay.src = "Assets/Buttons/auto-play-active.png";
+    autoplay_tracker = 1;
+  } else {
+    autoplay.src = "Assets/Buttons/auto-play-inactive.png";
+    autoplay_tracker = 0;
+  }
+});
+
+shuffle.addEventListener("click", function() {
+  if (shuffle_tracker === 0) {
+    shuffle.src = "Assets/Buttons/shuffle-active.png";
+    shuffle_tracker = 1;
+  } else {
+    shuffle.src = "Assets/Buttons/shuffle-inactive.png";
+    shuffle_tracker = 0;
+  }
+});
+
+volume.oninput = function() {
+  if (this.value <= 0) {
+    volume_img.src = "Assets/Buttons/volume-mute.png";
+  } else {
+    volume_img.src = "Assets/Buttons/volume-unmute.png";
+  }
+  song.volume = this.value / 100;
+};
+
+song.addEventListener("timeupdate", function() {
+  let pos = song.currentTime / song.duration;
+  duration.value = pos * 100;
+});
+
+duration.oninput = function() {
   song.currentTime = (this.value * song.duration) / 100;
 };
 
-/////// Volume bar
-
-volume_tracker.oninput = function() {
-  if (this.value <= 0) {
-    document.getElementById("volume-img").src =
-      "Assets/Pictures/volume-mute.png";
+song.addEventListener("ended", function() {
+  if (autoplay_tracker === 1) {
+    AutoPlay();
   } else {
-    document.getElementById("volume-img").src =
-      "Assets/Pictures/volume-unmute.png";
-  }
-  song.volume = this.value / 100;
-};
-
-//////// Volume-Bar for media objects
-
-volume_tracker_media.oninput = function() {
-  if (this.value <= 0) {
-    document.getElementById("volume-img-media").src =
-      "Assets/Pictures/volume-mute.png";
-  } else {
-    document.getElementById("volume-img-media").src =
-      "Assets/Pictures/volume-unmute.png";
-  }
-  song.volume = this.value / 100;
-};
-
-////////////////////////////Initializing songs///////////////////////////////
-
-song.src = songsList[current_song];
-text.textContent = songNames[current_song];
-poster.src = Poster[current_song];
-
-/*********** Autoplay Event Listener**********/
-
-auto_img.addEventListener("click", function() {
-  if (autoplay === 0) {
-    autoplay = 1;
-    auto_img.src = "Assets/Pictures/auto-play-active.png";
-  } else {
-    autoplay = 0;
-    auto_img.src = "Assets/Pictures/auto-play-inactive.png";
+    return null;
   }
 });
 
-/*************** Shuffle Event Listener ****************/
-
-shuffle_img.addEventListener("click", function() {
-  if (shuffle === 0) {
-    shuffle = 1;
-    shuffle_img.src = "Assets/Pictures/shuffle-active.png";
+song.addEventListener("ended", function() {
+  if (shuffle_tracker === 1) {
+    Shuffle();
   } else {
-    shuffle_img.src = "Assets/Pictures/shuffle-inactive.png";
-    shuffle = 0;
+    return null;
   }
 });
 
-/************ Autoplay ***********/
-function AutoPlay() {
-  song.addEventListener("ended", function() {
-    if (autoplay === 1) {
-      if (shuffle === 1) {
-        Shuffle();
-      }
-      current_song++;
-      if (current_song > songsList.length) {
-        current_song = 0;
-      }
-      song.src = songsList[current_song];
-      text.textContent = songNames[current_song];
-      poster.src = Poster[current_song];
-      song.play();
-      slider.value = 0;
-    } else {
-      return null;
-    }
-  });
-}
-AutoPlay();
-
-/********************FUNCTIONS**********************/
-
-// Play song
+// Functions:
 
 function PlaySong() {
   if (song.paused) {
@@ -161,98 +152,91 @@ function PlaySong() {
   }
 }
 
-//Play and Pause buttons
-
-function PlayOrPause() {
+function PlayNPause() {
   if (song.paused) {
-    document.getElementById("play").src = "Assets/Pictures/pause.png";
+    playorpause.src = "Assets/Buttons/pause.png";
   } else {
-    document.getElementById("play").src = "Assets/Pictures/play.png";
+    playorpause.src = "Assets/Buttons/play.png";
   }
   PlaySong();
 }
 
-//Next Song
-
-function NextSong() {
-  current_song++;
-  if (current_song > [songsList.length - 1]) {
+function AutoPlay() {
+  if (shuffle_tracker === 1) {
+    Shuffle();
+  } else {
+    current_song++;
+  }
+  if (current_song > songsList.length - 1) {
     current_song = 0;
   }
-  if (shuffle === 1) {
-    Shuffle();
-    PlayOrPause();
-  } else {
-    song.src = songsList[current_song];
-    text.textContent = songNames[current_song];
-    poster.src = Poster[current_song];
-  }
-  PlayOrPause();
+  song.src = songsList[current_song];
+  songname.textContent = songNames[current_song];
+  songposter.src = songPos[current_song];
+  song.play();
 }
-
-//Previous Song
-
-function PrevSong() {
-  current_song--;
-  if (current_song < 0) {
-    current_song = 14;
-  }
-  if (shuffle === 1) {
-    Shuffle();
-    PlayOrPause();
-  } else {
-    song.src = songsList[current_song];
-    text.textContent = songNames[current_song];
-    poster.src = Poster[current_song];
-  }
-  PlayOrPause();
-}
-
-//Shuffling
 
 function Shuffle() {
   let random = Math.random(songsList);
   random = random * songsList.length;
   random = parseInt(random);
-  if (random > songsList.length) {
-    random = 0;
-  }
   current_song = random;
+  let lastplayed = current_song;
+  if (current_song > songsList.length) {
+    current_song = 0;
+  }
   song.src = songsList[current_song];
-  text.textContent = songNames[current_song];
-  poster.src = Poster[current_song];
-  PlayOrPause();
+  songname.textContent = songNames[current_song];
+  songposter.src = songPos[current_song];
+  song.play();
 }
 
-//Song Names
+function NextSong() {
+  if (shuffle_tracker === 1) {
+    Shuffle();
+  }
+  current_song++;
+  if (current_song > songsList.length - 1) {
+    current_song = 0;
+  }
+  song.src = songsList[current_song];
+  songname.textContent = songNames[current_song];
+  songposter.src = songPos[current_song];
+  PlayNPause();
+}
 
-function SongsList() {
+function PrevSong() {
+  if (shuffle_tracker === 1) {
+    Shuffle();
+  }
+  current_song--;
+  if (current_song < 0) {
+    current_song = songsList.length - 1;
+  }
+  song.src = songsList[current_song];
+  songname.textContent = songNames[current_song];
+  songposter.src = songPos[current_song];
+  PlayNPause();
+}
+
+function SongList() {
   for (let i in songNames) {
-    let name = document.createElement("li");
-    name.dataset.value = i;
-    name.addEventListener("click", function() {
-      current_song = parseInt(name.dataset.value);
+    let listings = document.createElement("li");
+    let poster = document.createElement("img");
+    let names = document.createElement("p");
+    listings.insertAdjacentElement("beforeend", names);
+    listings.insertAdjacentElement("afterbegin", poster);
+    listings.dataset.value = i;
+    listings.addEventListener("click", function() {
+      current_song = parseInt(listings.dataset.value);
       song.src = songsList[current_song];
-      text.textContent = songNames[current_song];
-      poster.src = Poster[current_song];
-      PlayOrPause();
+      songname.textContent = songNames[current_song];
+      songposter.src = songPos[current_song];
+      PlayNPause();
     });
-    name.innerText = songNames[i];
-    nameList.insertAdjacentElement("beforeend", name);
+    poster.src = songPos[i];
+    names.innerText = songNames[i];
+    namelist.insertAdjacentElement("beforeend", listings);
   }
 }
-SongsList();
-
-///////// List toggle function
-
-function Toggle() {
-  if (toggle_tracker === 1) {
-    document.getElementById("list").style.display = "none";
-    toggle_tracker = 0;
-    document.getElementsByTagName("footer")[0].style.position = "fixed";
-  } else {
-    document.getElementById("list").style.display = "block";
-    toggle_tracker = 1;
-    document.getElementsByTagName("footer")[0].style.position = "relative";
-  }
-}
+SongList();
