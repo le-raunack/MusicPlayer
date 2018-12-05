@@ -6,14 +6,14 @@ body{
     background: lightgray;
 }
 
-#media{
+.controls-toggle, .toggled-controls{
     display: none;
 }
 
 #list{
     background: white;
     width: 50%;
-    margin: 10px auto;
+    margin: 10px auto 150px;
     padding: 10px;
     list-style: none;
     box-shadow: 0px 1px 5px 0px gray;
@@ -187,19 +187,39 @@ body{
     cursor: pointer;
 }
 
+.toggle{
+    display: none;
+}
+
 @media (min-width:320px) and (max-width:480px){
-    #media{
+    .controls-toggle{
         display: block;
-        box-shadow: 0px 1px 5px 0px black;
-        border-radius: 10px;
-        width: 80%;
-        margin: 10px auto;
-        background: white;
+        width: 100%;
+        height: 20px;
+        color: white;
         text-align: center;
-        padding: 10px;
+        background: red;
+        position: fixed;
+        bottom: 20%;
+        margin: 10px 0px;
+        left: 0%;
     }
-    
-    main{
+
+    .toggled-controls{
+        display: none;
+        background: white;
+        padding: 10px;
+        margin: 10px 0px;
+        position: fixed;
+        bottom: 20%;
+        left: 0%;
+    }
+
+    .toggled-controls table tr td{
+        width: 25%;
+    }
+
+    .musicplayer-controls{
         display: none;
     }
 
@@ -219,7 +239,8 @@ body{
     }
 
     .musicplayer-player{
-        width: 65%;
+        width: 90%;
+        border: none;
         margin: 0px 10px;
     }
 
@@ -242,22 +263,65 @@ body{
 }
 
 @media (min-width:481px) and (max-width:720px){
-    #media{
+    .controls-toggle{
         display: block;
-        box-shadow: 0px 1px 5px 0px black;
-        border-radius: 10px;
-        width: 80%;
-        margin: 10px auto;
-        background: white;
+        width: 100%;
+        height: 20px;
+        color: white;
         text-align: center;
+        background: red;
+        position: fixed;
+        bottom: 13%;
+        margin: 10px 0px;
+        left: 0%;
+    }
+
+    .toggled-controls{
+        display: none;
+        background: white;
         padding: 10px;
+        margin: 10px 0px;
+        position: fixed;
+        bottom: 12%;
+        left: 0%;
     }
-    
-    main{
+
+    .toggled-controls table{
+        width: 75%;
+        margin: 0px auto;
+    }
+
+    .toggled-controls table tr td{
+        width: 25%;
+    }
+
+    .musicplayer-controls{
         display: none;
     }
-    .volume{
-        display: none;
+
+    #list{
+        width: 90%;
+    }
+
+    #songposter{
+        width: 32px;
+        height: 32px;
+    }
+
+    .musicplayer{
+        padding: 0px;
+        display: inline-flex;
+        justify-content: left;
+    }
+
+    .musicplayer-player{
+        width: 90%;
+        border: none;
+        margin: 0px 10px;
+    }
+
+    .musicplayer-controls{
+        margin: 0px;
     }
 
     .songoperations{
@@ -266,6 +330,10 @@ body{
 
     .operation{
         width: 100%;
-        text-align: center;
+        margin: 10px 20px;
+    }
+
+    .volume{
+        display: none;
     }
 }
