@@ -24,6 +24,7 @@ let play_media = document.getElementById("play-media");
 let namelist = document.getElementById("list");
 let width = screen.width;
 let height = screen.height;
+let tracker = 1;
 
 let songsList = [
   "Assets/Songs/Song_1.mp3",
@@ -164,16 +165,6 @@ song.addEventListener("ended", function() {
   }
 });
 
-song.addEventListener("ended", function() {
-  if (shuffle_tracker === 1) {
-    Shuffle();
-  } else {
-    return null;
-  }
-});
-
-let tracker = 1;
-
 document.getElementById("toggler").addEventListener("click", function() {
   if (tracker === 0) {
     document.getElementById("toggled").style.display = "inline";
@@ -241,7 +232,7 @@ function AutoPlay() {
 }
 
 function Shuffle() {
-  let random = Math.random(songsList);
+  let random = Math.random();
   random = random * songsList.length;
   random = parseInt(random);
   current_song = random;
@@ -254,7 +245,6 @@ function Shuffle() {
     songname.textContent = songname.textContent.slice(0, 22) + "...";
   }
   songposter.src = songPos[current_song];
-  song.play();
 }
 
 function NextSong() {
