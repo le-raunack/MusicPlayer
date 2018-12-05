@@ -167,27 +167,10 @@ song.addEventListener("ended", function() {
 
 document.getElementById("toggler").addEventListener("click", function() {
   if (tracker === 0) {
-    document.getElementById("toggled").style.display = "inline";
-    if(width === 375){
-      document.getElementById("toggled").style.bottom = "15%";
-    }
-    if (width >= 500) {
-      this.style.bottom = "18%";
-    } else if (width === 375) {
-      this.style.bottom = "23%";
-    } else {
-      this.style.bottom = "30%";
-    }
+    document.getElementById("toggled").style.display = "flex";
     tracker = 1;
   } else {
     document.getElementById("toggled").style.display = "none";
-    if (width >= 500) {
-      this.style.bottom = "13%";
-    } else if (width === 375) {
-      this.style.bottom = "15%";
-    } else {
-      this.style.bottom = "20%";
-    }
     tracker = 0;
   }
 });

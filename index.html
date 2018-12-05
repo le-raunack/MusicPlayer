@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="index.css">
-    <link rel="shortcut icon" href="Assets/Buttons/favicon.ico" type="image/x-icon">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="index.css" />
+    <link
+      rel="shortcut icon"
+      href="Assets/Buttons/favicon.ico"
+      type="image/x-icon"
+    />
     <title>Simple Music Player</title>
-</head>
-<body>
+  </head>
+  <body>
     <main>
-        <div class="songlist-display">
-            <ul id="list"></ul>
-        </div>
+      <div class="songlist-display"><ul id="list"></ul></div>
+      <!--
         <div class="toggling">
                 <div class="controls-toggle" id="toggler">^</div>
                 <div class="toggled-controls" id="toggled">
@@ -25,43 +28,101 @@
                             <td><img src="Assets/Buttons/shuffle-inactive.png" alt="" id="shuffle-media"></td>
                         </tr>
                     </table>
-                </div>
-            </div>
-        <div class="musicplayer">
-            
-            <div class="musicplayer-player">
-                <img src="Assets/Pictures/Pos_1.jpg" alt="" id="songposter" width="100px" height="100px">
-                <div class="display">
-                    <h3 id="songname"></h3>
-                    <input type="range" min="0" max="100" value="0" id="duration">
-                    <p id="songtime">00:00 / 00:00</p>
-                </div>
-            </div>
-            <div class="musicplayer-controls">
-                <div class="controlbuttons">
-                    <table>
-                        <tr>
-                            <td onclick="PrevSong()"><img src="Assets/Buttons/prev.png" alt=""></td>
-                            <td onclick="PlayNPause()"><img src="Assets/Buttons/play.png" alt="" id="playnpause"></td>
-                            <td onclick="NextSong()"><img src="Assets/Buttons/next.png" alt=""></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="songoperations">
-                    <div class="operation autoplay">
-                            <img src="Assets/Buttons/auto-play-inactive.png" alt="" id="autoplay">
-                    </div>
-                    <div class="operation shuffle">
-                            <img src="Assets/Buttons/shuffle-inactive.png" alt="" id="shuffle">
-                    </div>
-                </div>
-                <div class="volume">
-                    <img src="Assets/Buttons/volume-unmute.png" alt="" id="volume-img">
-                    <input type="range" min="0" max="100" value="100" id="volume">
-                </div>
             </div>
         </div>
+      -->
+      <div class="musicplayer">
+        <div class="musicplayer-player">
+          <div class="toggling">
+            <div class="controls-toggle" id="toggler">Controls</div>
+            <div class="toggled-controls" id="toggled">
+              <table>
+                <tr>
+                  <td>
+                    <img
+                      src="Assets/Buttons/auto-play-inactive.png"
+                      alt=""
+                      id="auto-media"
+                    />
+                  </td>
+                  <td onclick="PrevSong()">
+                    <img src="Assets/Buttons/prev.png" alt="" />
+                  </td>
+                  <td onclick="PlayNPause()">
+                    <img src="Assets/Buttons/play.png" alt="" id="play-media" />
+                  </td>
+                  <td onclick="NextSong()">
+                    <img src="Assets/Buttons/next.png" alt="" />
+                  </td>
+                  <td>
+                    <img
+                      src="Assets/Buttons/shuffle-inactive.png"
+                      alt=""
+                      id="shuffle-media"
+                    />
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="player">
+            <img
+              src="Assets/Pictures/Pos_1.jpg"
+              alt=""
+              id="songposter"
+              width="100px"
+              height="100px"
+            />
+            <div class="display">
+              <h3 id="songname"></h3>
+              <input type="range" min="0" max="100" value="0" id="duration" />
+              <p id="songtime">00:00 / 00:00</p>
+            </div>
+          </div>
+        </div>
+        <div class="musicplayer-controls">
+          <div class="controlbuttons">
+            <table>
+              <tr>
+                <td onclick="PrevSong()">
+                  <img src="Assets/Buttons/prev.png" alt="" />
+                </td>
+                <td onclick="PlayNPause()">
+                  <img src="Assets/Buttons/play.png" alt="" id="playnpause" />
+                </td>
+                <td onclick="NextSong()">
+                  <img src="Assets/Buttons/next.png" alt="" />
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="songoperations">
+            <div class="operation autoplay">
+              <img
+                src="Assets/Buttons/auto-play-inactive.png"
+                alt=""
+                id="autoplay"
+              />
+            </div>
+            <div class="operation shuffle">
+              <img
+                src="Assets/Buttons/shuffle-inactive.png"
+                alt=""
+                id="shuffle"
+              />
+            </div>
+          </div>
+          <div class="volume">
+            <img
+              src="Assets/Buttons/volume-unmute.png"
+              alt=""
+              id="volume-img"
+            />
+            <input type="range" min="0" max="100" value="100" id="volume" />
+          </div>
+        </div>
+      </div>
     </main>
     <script src="index.js"></script>
-</body>
+  </body>
 </html>
