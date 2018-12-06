@@ -6,25 +6,25 @@
 
 //All variables:
 
-let song = new Audio();
-let current_song = 0;
-let autoplay = document.getElementById("autoplay");
-let auto_media = document.getElementById("auto-media");
-let autoplay_tracker = 0;
-let shuffle = document.getElementById("shuffle");
-let shuffle_media = document.getElementById("shuffle-media");
-let shuffle_tracker = 0;
-let songname = document.getElementById("songname");
-let songtime = document.getElementById("songtime");
-let songposter = document.getElementById("songposter");
-let volume = document.getElementById("volume");
-let volume_img = document.getElementById("volume-img");
-let playorpause = document.getElementById("playnpause");
-let play_media = document.getElementById("play-media");
-let namelist = document.getElementById("list");
-let width = screen.width;
-let height = screen.height;
-let tracker = 1;
+let song = new Audio(); //Audio object
+let current_song = 0; //Current song
+let autoplay = document.getElementById("autoplay"); //Autoplay for non-media devices
+let auto_media = document.getElementById("auto-media"); // Autoplay for media devices
+let autoplay_tracker = 0; // Autoplay activator
+let shuffle = document.getElementById("shuffle"); //Shuffle for non-media devices
+let shuffle_media = document.getElementById("shuffle-media"); //Shuffle for media devices
+let shuffle_tracker = 0; //Shuffle activator
+let songname = document.getElementById("songname"); //Song Names for display
+let songtime = document.getElementById("songtime"); //Song duration
+let songposter = document.getElementById("songposter"); //Song image
+let volume = document.getElementById("volume"); //Volume (only for non-media devices)
+let volume_img = document.getElementById("volume-img"); //Volume image
+let playorpause = document.getElementById("playnpause"); //Play and Pause buttons
+let play_media = document.getElementById("play-media"); //Play and pause buttons for media devices
+let namelist = document.getElementById("list"); //For displaying song names
+let width = screen.width; //for screen width
+let height = screen.height; //for screen height
+let tracker = 1; //Toggle tracker
 
 let songsList = [
   "Assets/Songs/Song_1.mp3",
@@ -86,10 +86,14 @@ song.src = songsList[current_song];
 songname.textContent = songNames[current_song];
 songposter.src = songPos[current_song];
 
+//Song duration event listener
+
 song.addEventListener("timeupdate", function() {
   songtime.textContent =
     calculateTime(song.currentTime) + " / " + calculateTime(song.duration);
 });
+
+//Autoplay event listener
 
 autoplay.addEventListener("click", function() {
   if (autoplay_tracker === 0) {
@@ -103,6 +107,8 @@ autoplay.addEventListener("click", function() {
   }
 });
 
+//Autoplay for media devices
+
 auto_media.addEventListener("click", function() {
   if (autoplay_tracker === 0) {
     auto_media.src = "Assets/Buttons/auto-play-active.png";
@@ -114,6 +120,8 @@ auto_media.addEventListener("click", function() {
     autoplay_tracker = 0;
   }
 });
+
+//Shuffle event listener
 
 shuffle.addEventListener("click", function() {
   if (shuffle_tracker === 0) {
@@ -127,6 +135,8 @@ shuffle.addEventListener("click", function() {
   }
 });
 
+//Shuffle for media devices
+
 shuffle_media.addEventListener("click", function() {
   if (shuffle_tracker === 0) {
     shuffle_media.src = "Assets/Buttons/shuffle-active.png";
@@ -139,6 +149,8 @@ shuffle_media.addEventListener("click", function() {
   }
 });
 
+//Volume slider
+
 volume.oninput = function() {
   if (this.value <= 0) {
     volume_img.src = "Assets/Buttons/volume-mute.png";
@@ -147,6 +159,8 @@ volume.oninput = function() {
   }
   song.volume = this.value / 100;
 };
+
+//Duration bar
 
 song.addEventListener("timeupdate", function() {
   let pos = song.currentTime / song.duration;
@@ -157,6 +171,8 @@ duration.oninput = function() {
   song.currentTime = (this.value * song.duration) / 100;
 };
 
+//Autoplayer
+
 song.addEventListener("ended", function() {
   if (autoplay_tracker === 1) {
     AutoPlay();
@@ -164,6 +180,8 @@ song.addEventListener("ended", function() {
     return null;
   }
 });
+
+//Media-based event listener
 
 document.getElementById("toggler").addEventListener("click", function() {
   if (tracker === 0) {
@@ -207,7 +225,7 @@ function AutoPlay() {
   }
   song.src = songsList[current_song];
   songname.textContent = songNames[current_song];
-  if (songname.textContent.length > 23) {
+  if (width <= 480 && songname.textContent.length > 23) {
     songname.textContent = songname.textContent.slice(0, 22) + "...";
   }
   songposter.src = songPos[current_song];
@@ -224,7 +242,7 @@ function Shuffle() {
   }
   song.src = songsList[current_song];
   songname.textContent = songNames[current_song];
-  if (songname.textContent.length > 23) {
+  if (width <= 480 && songname.textContent.length > 23) {
     songname.textContent = songname.textContent.slice(0, 22) + "...";
   }
   songposter.src = songPos[current_song];
@@ -240,7 +258,7 @@ function NextSong() {
   }
   song.src = songsList[current_song];
   songname.textContent = songNames[current_song];
-  if (songname.textContent.length > 23) {
+  if (width <= 480 && songname.textContent.length > 23) {
     songname.textContent = songname.textContent.slice(0, 22) + "...";
   }
   songposter.src = songPos[current_song];
@@ -257,7 +275,7 @@ function PrevSong() {
   }
   song.src = songsList[current_song];
   songname.textContent = songNames[current_song];
-  if (songname.textContent.length > 23) {
+  if (width <= 480 && songname.textContent.length > 23) {
     songname.textContent = songname.textContent.slice(0, 22) + "...";
   }
   songposter.src = songPos[current_song];
@@ -276,7 +294,7 @@ function SongList() {
       current_song = parseInt(listings.dataset.value);
       song.src = songsList[current_song];
       songname.textContent = songNames[current_song];
-      if (songname.textContent.length > 23) {
+      if (width <= 480 && songname.textContent.length > 23) {
         songname.textContent = songname.textContent.slice(0, 22) + "...";
       }
       songposter.src = songPos[current_song];

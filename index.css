@@ -1,349 +1,350 @@
-*{
-    font-family: 'Segoe UI';
+* {
+  font-family: "Segoe UI";
 }
 
-body{
-    background: lightgray;
+body {
+  background: lightgray;
 }
 
-.controls-toggle, .toggled-controls{
-    display: none;
+.controls-toggle,
+.toggled-controls {
+  display: none;
 }
 
-#list{
-    background: white;
-    width: 50%;
-    margin: 10px auto 150px;
-    padding: 10px;
-    list-style: none;
-    box-shadow: 0px 1px 5px 0px gray;
+#list {
+  background: white;
+  width: 50%;
+  margin: 10px auto 150px;
+  padding: 10px;
+  list-style: none;
+  box-shadow: 0px 1px 5px 0px gray;
 }
 
-#list li{
+#list li {
+  display: flex;
+  margin: 10px 0px;
+  padding: 10px 0px;
+  border-bottom: 1px solid gray;
+  cursor: pointer;
+}
+
+#list li:hover {
+  background: lightgray;
+}
+
+#list li img {
+  width: 100px;
+  height: 100px;
+  margin: 0px 10px;
+  display: flex;
+}
+
+#list li p {
+  display: flex;
+}
+
+.musicplayer {
+  background: white;
+  position: fixed;
+  left: 0%;
+  bottom: 0%;
+  box-shadow: 0px -1px 2px 0px gray;
+  opacity: 0.7;
+  width: 100%;
+  display: flex;
+  padding: 5px 0px;
+  text-align: center;
+  justify-content: center;
+}
+
+.musicplayer:hover {
+  opacity: 1;
+}
+
+.musicplayer-player,
+.musicplayer-controls {
+  width: 90%;
+}
+
+.player {
+  display: flex;
+  width: 100%;
+}
+
+.musicplayer-player {
+  width: 70%;
+  display: flex;
+  border-right: 1px lightgray solid;
+}
+
+.display {
+  width: 90%;
+  margin: 0px 10px;
+}
+
+#songposter {
+  display: flex;
+  margin: 15px 0px;
+}
+
+#duration {
+  width: 95%;
+  margin: 0px 10px;
+  border-radius: 5px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  height: 5px;
+  cursor: pointer;
+  background: skyblue;
+  outline: none;
+}
+
+#duration::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  background: white;
+  border: 2px solid black;
+  width: 1.9%;
+  cursor: pointer;
+  border-radius: 10px;
+  height: 15px;
+}
+
+#duration::-moz-range-thumb {
+  appearance: none;
+  -moz-appearance: none;
+  background: white;
+  border: 2px solid black;
+  width: 1.9%;
+  cursor: pointer;
+  border-radius: 10px;
+  height: 15px;
+}
+
+.musicplayer-controls {
+  text-align: center;
+  width: 15%;
+  margin: 0px 5px;
+}
+
+.musicplayer-controls table {
+  width: 100%;
+  padding: 3px;
+}
+
+.musicplayer-controls table tr td {
+  cursor: pointer;
+  border: 1px lightgray solid;
+  padding: 5px 0px;
+}
+
+.songoperations {
+  display: flex;
+  padding: 0px 10px;
+}
+
+.operation {
+  display: flex;
+  width: 50%;
+  justify-content: center;
+}
+
+#autoplay,
+#shuffle {
+  border: 1px lightgray solid;
+  cursor: pointer;
+  padding: 2px 10px;
+}
+
+.volume {
+  display: flex;
+}
+
+#volume {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 90%;
+  margin: auto 10px;
+  height: 2px;
+  background: red;
+  outline: none;
+  cursor: pointer;
+}
+
+#volume::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid gray;
+  background: white;
+  width: 5%;
+  border-radius: 10px;
+  height: 20px;
+  cursor: pointer;
+}
+
+#volume::-moz-range-thumb {
+  appearance: none;
+  -moz-appearance: none;
+  border: 1px solid gray;
+  background: white;
+  width: 4%;
+  border-radius: 10px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.toggle {
+  display: none;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .musicplayer-player {
+    display: block;
+  }
+
+  .player {
     display: flex;
-    margin: 10px 0px;
-    padding: 10px 0px;
-    border-bottom: 1px solid gray;
-    cursor: pointer;
-}
+  }
 
-#list li:hover{
-    background: lightgray;
-}
-
-#list li img{
-    width: 100px;
-    height: 100px;
-    margin: 0px 10px;
-    display: flex;
-}
-
-#list li p{
-    display: flex;
-}
-
-.musicplayer{
-    background: white;
-    position: fixed;
-    left: 0%;
-    bottom: 0%;
-    box-shadow: 0px -1px 2px 0px gray;
-    opacity: 0.7;
+  .controls-toggle {
+    display: block;
     width: 100%;
-    display: flex;
-    padding: 5px 0px;
+    height: 25px;
+    color: white;
     text-align: center;
-    justify-content: center;
-}
-
-.musicplayer:hover{
-    opacity: 1;
-}
-
-.musicplayer-player, .musicplayer-controls{
-    width: 90%;
-}
-
-.player{
-    display: flex;
-    width: 100%;
-}
-
-.musicplayer-player{
-    width: 70%;
-    display: flex;
-    border-right: 1px lightgray solid;
-}
-
-.display{
-    width: 90%;
-    margin: 0px 10px;
-}
-
-#songposter{
-    display: flex;
-    margin: 15px 0px;
-}
-
-#duration{
-    width: 95%;
-    margin: 0px 10px;
-    border-radius: 5px;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    height: 5px;
-    cursor: pointer;
-    background: skyblue;
-    outline: none;
-}
-
-#duration::-webkit-slider-thumb{
-    appearance: none;
-    -webkit-appearance: none;
-    background: white;
-    border: 2px solid black;
-    width: 1.9%;
-    cursor: pointer;
-    border-radius: 10px;
-    height: 15px;
-}
-
-#duration::-moz-range-thumb{
-    appearance: none;
-    -moz-appearance: none;
-    background: white;
-    border: 2px solid black;
-    width: 1.9%;
-    cursor: pointer;
-    border-radius: 10px;
-    height: 15px;
-}
-
-.musicplayer-controls{
-    text-align: center;
-    width: 15%;
-    margin: 0px 5px;
-}
-
-.musicplayer-controls table{
-    width: 100%;
-    padding: 3px;
-}
-
-.musicplayer-controls table tr td{
-    cursor: pointer;
-    border: 1px lightgray solid;
-    padding: 5px 0px;
-}
-
-.songoperations{
-    display: flex;
-    padding: 0px 10px;
-}
-
-.operation{
-    display: flex;
-    width: 50%;
-    justify-content: center;
-}
-
-#autoplay, #shuffle{
-    border: 1px lightgray solid;
-    cursor: pointer;
-    padding: 2px 10px;
-}
-
-.volume{
-    display: flex;
-}
-
-#volume{
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    width: 90%;
-    margin: auto 10px;
-    height: 2px;
     background: red;
-    outline: none;
-    cursor: pointer;
-}
+    margin: 10px 0px;
+  }
 
-#volume::-webkit-slider-thumb{
-    appearance: none;
-    -webkit-appearance: none;
-    border: 1px solid gray;
-    background: white;
-    width: 5%;
-    border-radius: 10px;
-    height: 20px;
-    cursor: pointer;
-}
-
-#volume::-moz-range-thumb{
-    appearance: none;
-    -moz-appearance: none;
-    border: 1px solid gray;
-    background: white;
-    width: 4%;
-    border-radius: 10px;
-    height: 20px;
-    cursor: pointer;
-}
-
-.toggle{
+  .toggled-controls {
     display: none;
+    background: white;
+    justify-content: center;
+    margin: 10px 0px;
+  }
+
+  .toggled-controls table tr td {
+    width: 25%;
+    padding: 0px 10px;
+  }
+
+  .musicplayer-controls {
+    display: none;
+  }
+
+  #list {
+    width: 90%;
+  }
+
+  #songposter {
+    width: 32px;
+    height: 32px;
+  }
+
+  .musicplayer {
+    padding: 0px;
+    display: inline-flex;
+    justify-content: left;
+  }
+
+  .musicplayer-player {
+    width: 90%;
+    border: none;
+    margin: 0px 10px;
+  }
+
+  .musicplayer-controls {
+    margin: 0px;
+  }
+
+  .songoperations {
+    display: block;
+  }
+
+  .operation {
+    width: 100%;
+    margin: 10px 20px;
+  }
+
+  .volume {
+    display: none;
+  }
 }
 
-@media (min-width:320px) and (max-width:480px){
-    .musicplayer-player{
-        display: block;
-    }
+@media (min-width: 481px) and (max-width: 720px) {
+  .musicplayer-player {
+    display: block;
+  }
 
-    .player{
-        display: flex;
-    }
+  .player {
+    width: 90%;
+    display: flex;
+    margin: 0px auto;
+  }
 
-    .controls-toggle{
-        display: block;
-        width: 100%;
-        height: 25px;
-        color: white;
-        text-align: center;
-        background: red;
-        margin: 10px 0px;
-    }
+  .controls-toggle {
+    display: block;
+    width: 90%;
+    height: 25px;
+    color: white;
+    text-align: center;
+    background: red;
+    margin: 10px auto;
+  }
 
-    .toggled-controls{
-        display: none;
-        background: white;
-        justify-content: center;
-        margin: 10px 0px;
+  .toggled-controls {
+    display: none;
+    background: white;
+    justify-content: center;
+    margin: 10px 0px;
+  }
 
-    }
+  .toggled-controls table tr td {
+    width: 25%;
+    padding: 0px 10px;
+  }
 
-    .toggled-controls table tr td{
-        width: 25%;
-        padding: 0px 10px;
-    }
+  .musicplayer-controls {
+    display: none;
+  }
 
-    .musicplayer-controls{
-        display: none;
-    }
+  #list {
+    width: 90%;
+  }
 
-    #list{
-        width: 90%;
-    }
+  #songposter {
+    width: 32px;
+    height: 32px;
+  }
 
-    #songposter{
-        width: 32px;
-        height: 32px;
-    }
+  .musicplayer {
+    padding: 0px;
+    display: inline-flex;
+    justify-content: left;
+  }
 
-    .musicplayer{
-        padding: 0px;
-        display: inline-flex;
-        justify-content: left;
-    }
+  .musicplayer-player {
+    width: 90%;
+    border: none;
+    margin: 0px 10px;
+  }
 
-    .musicplayer-player{
-        width: 90%;
-        border: none;
-        margin: 0px 10px;
-    }
+  .musicplayer-controls {
+    margin: 0px;
+  }
 
-    .musicplayer-controls{
-        margin: 0px;
-    }
+  .songoperations {
+    display: block;
+  }
 
-    .songoperations{
-        display: block;
-    }
+  .operation {
+    width: 100%;
+    margin: 10px 20px;
+  }
 
-    .operation{
-        width: 100%;
-        margin: 10px 20px;
-    }
-
-    .volume{
-        display: none;
-    }
-}
-
-@media (min-width:481px) and (max-width:720px){
-    .musicplayer-player{
-        display: block;
-    }
-
-    .player{
-        width: 90%;
-        display: flex;
-        margin: 0px auto;
-    }
-
-    .controls-toggle{
-        display: block;
-        width: 90%;
-        height: 25px;
-        color: white;
-        text-align: center;
-        background: red;
-        margin: 10px auto;
-    }
-
-    .toggled-controls{
-        display: none;
-        background: white;
-        justify-content: center;
-        margin: 10px 0px;
-
-    }
-
-    .toggled-controls table tr td{
-        width: 25%;
-        padding: 0px 10px;
-    }
-
-    .musicplayer-controls{
-        display: none;
-    }
-
-    #list{
-        width: 90%;
-    }
-
-    #songposter{
-        width: 32px;
-        height: 32px;
-    }
-
-    .musicplayer{
-        padding: 0px;
-        display: inline-flex;
-        justify-content: left;
-    }
-
-    .musicplayer-player{
-        width: 90%;
-        border: none;
-        margin: 0px 10px;
-    }
-
-    .musicplayer-controls{
-        margin: 0px;
-    }
-
-    .songoperations{
-        display: block;
-    }
-
-    .operation{
-        width: 100%;
-        margin: 10px 20px;
-    }
-
-    .volume{
-        display: none;
-    }
+  .volume {
+    display: none;
+  }
 }
